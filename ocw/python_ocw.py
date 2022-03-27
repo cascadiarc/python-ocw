@@ -1,7 +1,6 @@
 import requests, json
 from requests.exceptions import HTTPError
 
-#from . import session
 class ocw(object):
     '''This is a class that wraps the Online Checkwriter API'''
     __url = None
