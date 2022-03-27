@@ -1,5 +1,3 @@
-
-   
 from setuptools import setup, find_packages
 
 with open("README.md", "r", encoding="utf-8") as fh:
@@ -22,5 +20,8 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    packages=find_packages(exclude=('tests', 'docs'))
+    python_requires=">=3.6",
+    packages=[
+        'ocw'
+    ],
 )
