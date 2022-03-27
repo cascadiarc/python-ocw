@@ -1,1 +1,1 @@
-from .python_ocw.py import ocw
+from .python_ocw import ocw
