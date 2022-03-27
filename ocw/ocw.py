@@ -28,8 +28,11 @@ class ocw(object):
             print(f'error output : {response}')
     
     ###Payees
-    def get_all_payees(self):
-        u = f'{self.__url}/payees?perPage&page&term'
+    def get_payees(self,page='1'):
+        if page == '1':
+            u = f'{self.__url}/payees?perPage=1000'
+        else:
+            u = f'{self.__url}/payees?perPage=1000&page={page}'
         payload = {}
         try:
             response = requests.request("GET", u, headers=self.__header, data=payload)
