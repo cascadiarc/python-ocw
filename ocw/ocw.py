@@ -91,7 +91,7 @@ class ocw(object):
                 d_pid[a['payeeId']] = a['name']
             return d_pid
         except HTTPError as e:
-            print(f'error output : {response}')
+            print(f'error output : {response.text}')
     
     def update_payee(self,pid,payload):
         u = f'{self.__url}/payees/pid'
