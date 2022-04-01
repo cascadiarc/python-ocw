@@ -8,7 +8,7 @@ with open('LICENSE') as f:
 
 setup(
     name='python_ocw',
-    version='0.0.5',
+    version='0.0.6',
     description="The classses that wrap Online Checkwriter's API",
     long_description=readme,
     author='Dan Herrington',

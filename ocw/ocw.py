@@ -25,7 +25,8 @@ class ocw(object):
             ba = r['data']['bankAccounts']
             return ba
         except HTTPError as e:
-            print(f'error output : {response}')
+            d = response.json()
+            return f'{e.response.status_code}',d["errorMsg"]
     
     ###Payees
     def get_payees(self,page='1'):
@@ -41,7 +42,8 @@ class ocw(object):
             p = r['data']
             return p
         except HTTPError as e:
-            print(f'error output : {response}')
+            d = response.json()
+            return f'{e.response.status_code}',d["errorMsg"]
 
     def get_payee_by_id(self,payeeId):
         u = f'{self.__url}/payees/{payeeId}'
@@ -51,7 +53,8 @@ class ocw(object):
             response.raise_for_status()
             return response.text
         except HTTPError as e:
-            print(f'error output : {response}')
+            d = response.json()
+            return f'{e.response.status_code}',d["errorMsg"]
 
     def create_payees(self,payee_data):
         u = f'{self.__url}/payees'
@@ -94,7 +97,8 @@ class ocw(object):
                 d_pid[a['payeeId']] = a['name']
             return d_pid
         except HTTPError as e:
-            print(f'error output : {response.text}')
+            d = response.json()
+            return f'{e.response.status_code}',d["errorMsg"]
     
     def update_payee(self,pid,payload):
         u = f'{self.__url}/payees/pid'
@@ -103,7 +107,8 @@ class ocw(object):
             response.raise_for_status()
             return response.text
         except HTTPError as e:
-            print(f'error output : {response}')
+            d = response.json()
+            return f'{e.response.status_code}',d["errorMsg"]
 
     def delete_payee(self,payeeId):
         u = f'{self.__url}/payees/{payeeId}'
@@ -113,7 +118,8 @@ class ocw(object):
             response.raise_for_status()
             return response.text
         except HTTPError as e:
-            print(f'error output : {response}')
+            d = response.json()
+            return f'{e.response.status_code}',d["errorMsg"]
 
     ###Checks
     def retrieve_all_checks(self,payeeId):
@@ -125,7 +131,8 @@ class ocw(object):
             response.raise_for_status()
             return response.text
         except HTTPError as e:
-            print(f'error output : {response}')
+            d = response.json()
+            return f'{e.response.status_code}',d["errorMsg"]
 
     def get_check(self,checkId):
         '''Gets a check by the check Id'''
@@ -136,7 +143,8 @@ class ocw(object):
             response.raise_for_status()
             return response.text
         except HTTPError as e:
-            print(f'error output : {response}')
+            d = response.json()
+            return f'{e.response.status_code}',d["errorMsg"]
 
     def create_check(self,payload):
         '''Create a check within the system. A Payee must be deifned in the
@@ -152,7 +160,8 @@ class ocw(object):
             cid = cd["data"]["checks"][0]["checkId"]
             return cid
         except HTTPError as e:
-            print(f'error output : {response}')
+            d = response.json()
+            return f'{e.response.status_code}',d["errorMsg"]
 
     def update_check(self,checkId,data):
         '''Update a check'''
@@ -164,7 +173,8 @@ class ocw(object):
             cid = cd["data"]["checks"][0]["checkId"]
             return cid
         except HTTPError as e:
-            print(f'error output : {response}')
+            d = response.json()
+            return f'{e.response.status_code}',d["errorMsg"]
 
     def print_checks(self,checkIds):
         '''Prints the check Ids supplied as a list
@@ -191,4 +201,5 @@ class ocw(object):
             url = r["data"]["url"]
             return url
         except HTTPError as e:
-            print(f'error output : {response}') 
+            d = response.json()
+            return f'{e.response.status_code}',d["errorMsg"]
